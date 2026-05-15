@@ -14,7 +14,7 @@ export function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
-    alert("Thank you for your message! Our team at BOdega Tech Solutions will get back to you shortly.");
+    alert("Thank you for your message! Our team at Bodega Tech Solutions will get back to you shortly.");
     setFormData({ name: "", email: "", message: "" });
   };
 
@@ -70,24 +70,24 @@ export function Contact() {
                 {
                   icon: Mail,
                   label: "Project Inquiries",
-                  value: "contact@bodegatech.com",
-                  href: "mailto:contact@bodegatech.com",
+                  value: "connect@bodega.software",
+                  href: "mailto:connect@bodega.software",
                   color: "text-blue-400",
                   bg: "bg-blue-500/10",
                 },
                 {
                   icon: Phone,
                   label: "Direct Line",
-                  value: "+91 90000 00000",
-                  href: "tel:+919000000000",
+                  value: "+91 8712612741, +91 9032920222",
+                  href: "tel:+918712612741",
                   color: "text-cyan-400",
                   bg: "bg-cyan-500/10",
                 },
                 {
-                  icon: MessageCircle,
-                  label: "WhatsApp",
-                  value: "Instant Support",
-                  href: "https://wa.me/919000000000",
+                  icon: MapPin,
+                  label: "Office Address",
+                  value: "D. No: 131, Inner Ring Road Phase - 1, Gorantla Village, Guntur East Mandal, Guntur - 522034",
+                  href: "https://maps.google.com/?q=D.+No:+131,+Inner+Ring+Road+Phase+-+1,+Gorantla+Village,+Guntur+East+Mandal,+Guntur+-+522034",
                   color: "text-emerald-400",
                   bg: "bg-emerald-500/10",
                 },
@@ -95,16 +95,18 @@ export function Contact() {
                 <motion.a
                   key={index}
                   href={contact.href}
+                  target={contact.icon === MapPin ? "_blank" : undefined}
+                  rel={contact.icon === MapPin ? "noopener noreferrer" : undefined}
                   className="group flex items-center gap-6 p-6 rounded-3xl bg-white/[0.03] border border-white/5 hover:border-blue-500/30 transition-all duration-300 hover:bg-white/[0.06]"
                 >
-                  <div className={`w-14 h-14 rounded-2xl ${contact.bg} ${contact.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                  <div className={`w-14 h-14 rounded-2xl ${contact.bg} ${contact.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}>
                     <contact.icon className="w-7 h-7" />
                   </div>
                   <div>
                     <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">
                       {contact.label}
                     </p>
-                    <p className="text-lg font-bold text-white">
+                    <p className={`font-bold text-white ${contact.icon === MapPin ? 'text-sm leading-relaxed' : 'text-base lg:text-lg'}`}>
                       {contact.value}
                     </p>
                   </div>

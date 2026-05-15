@@ -34,31 +34,28 @@ export function About() {
           >
             <motion.div variants={itemVariants} className="inline-block px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 mb-6">
               <span className="text-blue-400 text-xs font-bold tracking-widest uppercase">
-                ABOUT OUR MISSION
+                ABOUT BODEGA TECH SOLUTIONS
               </span>
             </motion.div>
 
-            <motion.h2 variants={itemVariants} className="mb-8 leading-tight">
+            <motion.h2 variants={itemVariants} className="mb-8 leading-tight text-4xl lg:text-5xl">
               <span className="block text-white">
-                Empowering Businesses
+                Your Digital
               </span>
               <span className="block bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-                Through Innovation
+                Growth Partner
               </span>
             </motion.h2>
 
-            <motion.p variants={itemVariants} className="text-lg text-slate-400 mb-8 leading-relaxed font-medium">
-              We are a passionate team of developers, marketers, and creatives
-              dedicated to helping businesses succeed in the digital world.
-              BOdega Tech Solutions combines technology, creativity, and
-              strategy to deliver end-to-end solutions for startups and growing
-              businesses.
-            </motion.p>
+            <motion.div variants={itemVariants} className="space-y-6 mb-10">
+              <p className="text-slate-400 leading-relaxed font-medium text-lg">
+                At Bodega Tech Solutions, we are a results-focused digital agency dedicated to helping brands, startups, and local businesses build a powerful online presence. We combine innovative marketing strategies, creative branding, and modern technology to drive measurable growth.
+              </p>
 
-            <motion.p variants={itemVariants} className="text-lg text-slate-400 mb-10 leading-relaxed font-medium">
-              Our mission is to empower local and global businesses by providing
-              affordable, high-quality digital services that drive real results.
-            </motion.p>
+              <p className="text-slate-400 leading-relaxed font-medium text-lg">
+                We believe digital marketing is more than just promotion—it’s about creating meaningful brand experiences and building customer trust. Whether you need high-converting ad campaigns, a professional website, or a viral social media strategy, our expert team is here to help you grow smarter, faster, and stronger.
+              </p>
+            </motion.div>
 
             <div className="grid sm:grid-cols-2 gap-6 mt-12">
               {[
@@ -90,42 +87,32 @@ export function About() {
             className="relative"
           >
             <div className="relative aspect-square max-w-[500px] mx-auto">
-              {/* Main Card */}
-              <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-blue-600 to-indigo-600 rotate-6 flex items-center justify-center p-1 font-bold text-white overflow-hidden">
+              {/* Main Card Background */}
+              <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-blue-600 to-indigo-600 rotate-6 flex items-center justify-center p-1 font-bold text-white overflow-hidden shadow-2xl">
                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(255,255,255,0.2),transparent)] opacity-40" />
               </div>
 
-              {/* Glass Overlays */}
+              {/* Team Image Overlay */}
               <motion.div
-                animate={{ y: [0, -20, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute inset-4 rounded-[2rem] bg-white/5 backdrop-blur-2xl border border-white/10 shadow-2xl p-12 flex flex-col justify-between"
+                animate={{ y: [0, -15, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute inset-2 rounded-[2rem] overflow-hidden shadow-2xl border border-white/10 bg-slate-900"
               >
-                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-white">
-                  <Zap className="w-10 h-10" />
-                </div>
-                
-                <div className="space-y-4">
-                  <div className="h-4 bg-white/10 rounded-full w-3/4" />
-                  <div className="h-4 bg-white/10 rounded-full w-full" />
-                  <div className="h-4 bg-white/10 rounded-full w-2/3" />
-                </div>
-
-                <div className="flex items-center gap-4">
-                  {[...Array(3)].map((_, i) => (
-                    <div key={i} className="w-10 h-10 rounded-full bg-white/10 border border-white/5" />
-                  ))}
-                </div>
+                <img 
+                  src="/images/team.png" 
+                  alt="Bodega Tech Solutions Expert Team" 
+                  className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-500" 
+                />
               </motion.div>
 
               {/* Floating Stat Card */}
               <motion.div
                 animate={{ y: [0, 20, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-8 -right-8 p-6 rounded-3xl bg-slate-900 border border-white/10 shadow-2xl"
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                className="absolute -bottom-8 -right-8 p-6 rounded-3xl bg-[#0f172a]/90 backdrop-blur-xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400">
+                  <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400 border border-blue-500/20">
                     <Users className="w-6 h-6" />
                   </div>
                   <div>

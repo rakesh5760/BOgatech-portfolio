@@ -1,49 +1,91 @@
 import { motion, AnimatePresence, useMotionValue, useSpring } from "motion/react";
-import { ExternalLink, Tag, Layers, Globe, ShoppingCart, TrendingUp } from "lucide-react";
-import { useState, useRef, useEffect } from "react";
+import { ExternalLink, Layers, Globe, Target, Megaphone, Heart, MessageSquare, Video, Users } from "lucide-react";
+import { useState, useRef } from "react";
 
-const CATEGORIES = ["All", "Web Development", "E-commerce", "Marketing", "Branding"];
+const CATEGORIES = [
+  "All", 
+  "Social Media Marketing", 
+  "Performance Marketing", 
+  "Website Development", 
+  "Branding", 
+  "Content Creation", 
+  "Influencer Marketing", 
+  "UGC Content", 
+  "WhatsApp Automation"
+];
 
 const projects = [
   {
     title: "EcoShop Experience",
-    category: "E-commerce",
-    description: "Designed and developed a modern online store with seamless user experience and payment integration.",
+    category: "Website Development",
+    description: "Modern, responsive, and SEO-optimized websites designed to enhance user experience.",
     image: "/images/ecoshop.png",
-    size: "large",
-    tech: ["React", "Node.js", "Stripe"],
+    tech: ["Next.js", "React", "Tailwind"],
     result: "+150% Sales",
-    icon: ShoppingCart,
-  },
-  {
-    title: "ViralGrowth Ads",
-    category: "Marketing",
-    description: "Executed a high-performing ad campaign that increased client engagement and sales by 200%.",
-    image: "/images/viralgrowth.png",
-    size: "small",
-    tech: ["Meta Ads", "Google Ads"],
-    result: "2M+ Reach",
-    icon: TrendingUp,
-  },
-  {
-    title: "Enterprise Portal",
-    category: "Web Development",
-    description: "Built a professional website for a local business to establish strong online presence.",
-    image: "/images/enterprise.png",
-    size: "small",
-    tech: ["Next.js", "TypeScript", "Tailwind"],
-    result: "Global Reach",
     icon: Globe,
   },
   {
-    title: "Infinite Brand",
+    title: "10x ROAS Ad Campaign",
+    category: "Performance Marketing",
+    description: "Data-driven Meta Ads and Google Ads campaigns focused on generating quality leads.",
+    image: "/images/viralgrowth.png",
+    tech: ["Meta Ads", "Google Ads"],
+    result: "2M+ Reach",
+    icon: Target,
+  },
+  {
+    title: "Viral Social Media Growth",
+    category: "Social Media Marketing",
+    description: "Strategic social media management and audience engagement to build brand awareness.",
+    image: "/images/viralgrowth.png",
+    tech: ["Instagram", "Strategy"],
+    result: "50k+ Followers",
+    icon: Megaphone,
+  },
+  {
+    title: "Complete Brand Identity",
     category: "Branding",
-    description: "Created complete branding including logos, posters, and social media designs.",
+    description: "Creative branding solutions including brand identity and visual design.",
     image: "/images/brand.png",
-    size: "medium",
     tech: ["Illustrator", "Photoshop"],
-    result: "Rebrand 2024",
+    result: "Brand Launch",
     icon: Layers,
+  },
+  {
+    title: "Engaging Visual Content",
+    category: "Content Creation",
+    description: "Professional photo shoots, reels, videos, and promotional content crafted to capture attention.",
+    image: "/images/enterprise.png",
+    tech: ["Video Editing", "Graphics"],
+    result: "High Engagement",
+    icon: Video,
+  },
+  {
+    title: "Top-Tier Influencer Push",
+    category: "Influencer Marketing",
+    description: "Collaborations with relevant influencers to increase brand reach and credibility.",
+    image: "/images/enterprise.png",
+    tech: ["Outreach", "Campaigns"],
+    result: "100+ Influencers",
+    icon: Users,
+  },
+  {
+    title: "Authentic UGC Drive",
+    category: "UGC Content",
+    description: "Authentic user-generated style content designed to create trust and connect with audiences.",
+    image: "/images/brand.png",
+    tech: ["TikTok", "Shorts"],
+    result: "-40% CPA",
+    icon: Heart,
+  },
+  {
+    title: "Automated Lead Gen Bot",
+    category: "WhatsApp Automation",
+    description: "Automated WhatsApp solutions for lead responses and customer engagement.",
+    image: "/images/ecoshop.png",
+    tech: ["WhatsApp API", "Bot Logic"],
+    result: "24/7 Support",
+    icon: MessageSquare,
   },
 ];
 
@@ -63,7 +105,6 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
     const distanceX = e.clientX - centerX;
     const distanceY = e.clientY - centerY;
     
-    // Magnetic effect only within range
     if (Math.abs(distanceX) < 100 && Math.abs(distanceY) < 100) {
       x.set(distanceX * 0.4);
       y.set(distanceY * 0.4);
@@ -86,15 +127,11 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
       exit={{ opacity: 0, scale: 0.9 }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`group relative rounded-[2.5rem] overflow-hidden cursor-pointer shadow-2xl ${
-        project.size === "large" ? "lg:col-span-8 lg:row-span-2" : 
-        project.size === "medium" ? "lg:col-span-4 lg:row-span-2" : 
-        "lg:col-span-4 lg:row-span-1"
-      }`}
+      className="group relative h-[400px] rounded-[2rem] overflow-hidden cursor-pointer shadow-2xl"
     >
       {/* Enhanced Image Overlay for Readability */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/50 to-transparent z-10 opacity-80 group-hover:opacity-95 transition-opacity duration-500" />
-      <div className="absolute inset-0 bg-black/20 z-10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/70 to-transparent z-10 opacity-90 transition-opacity duration-500" />
+      <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-500 z-10" />
       
       {/* Image */}
       <img
@@ -104,33 +141,36 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
       />
 
       {/* Content */}
-      <div className="absolute inset-0 z-20 p-10 flex flex-col justify-end">
-        <div className="flex items-center justify-between mb-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+      <div className="absolute inset-0 z-20 p-8 flex flex-col justify-end">
+        <div className="flex items-center justify-between mb-4 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
           <div className="flex items-center gap-2">
              <project.icon className="w-5 h-5 text-blue-400" />
-             <span className="text-sm font-bold text-blue-400 uppercase tracking-widest drop-shadow-md">
+             <span className="text-xs font-bold text-blue-400 uppercase tracking-widest drop-shadow-md">
                {project.category}
              </span>
           </div>
-          <div className="px-4 py-1.5 rounded-full bg-blue-600/30 border border-blue-500/40 backdrop-blur-md">
-             <span className="text-[11px] font-bold text-blue-300 uppercase tracking-widest">{project.result}</span>
+          <div className="px-3 py-1 rounded-full bg-blue-600/30 border border-blue-500/40 backdrop-blur-md">
+             <span className="text-[10px] font-bold text-blue-300 uppercase tracking-widest">{project.result}</span>
           </div>
         </div>
         
-        <h3 className="text-3xl font-black text-white mb-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-[50ms] drop-shadow-xl tracking-tight">
+        <h3 className="text-2xl font-black text-white mb-2 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500 delay-[50ms] drop-shadow-xl tracking-tight">
           {project.title}
         </h3>
         
-        <p className="text-slate-200 text-base leading-relaxed max-w-lg opacity-0 group-hover:opacity-100 transition-all duration-500 delay-[100ms] mb-8 font-medium drop-shadow-md">
-          {project.description}
-        </p>
-
-        <div className="flex flex-wrap gap-2.5 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-[150ms]">
-          {project.tech.map((t) => (
-            <span key={t} className="px-3 py-1.5 rounded-xl bg-white/10 border border-white/20 text-[11px] text-white font-bold uppercase tracking-wider backdrop-blur-md">
-              {t}
-            </span>
-          ))}
+        <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500">
+          <div className="overflow-hidden">
+            <p className="text-slate-300 text-sm leading-relaxed mb-6 font-medium drop-shadow-md pt-2">
+              {project.description}
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {project.tech.map((t) => (
+                <span key={t} className="px-2.5 py-1 rounded-lg bg-white/10 border border-white/20 text-[10px] text-white font-bold uppercase tracking-wider backdrop-blur-md">
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
@@ -138,9 +178,9 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
       <motion.div
         ref={iconRef}
         style={{ x: springX, y: springY }}
-        className="absolute top-10 right-10 z-20 w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-50 group-hover:scale-100 shadow-2xl"
+        className="absolute top-6 right-6 z-20 w-12 h-12 rounded-xl bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-50 group-hover:scale-100 shadow-2xl"
       >
-        <ExternalLink className="w-6 h-6" />
+        <ExternalLink className="w-5 h-5" />
       </motion.div>
     </motion.div>
   );
@@ -161,7 +201,7 @@ export function Portfolio() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-16"
         >
           <div className="inline-block px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 mb-6">
             <span className="text-blue-400 text-xs font-bold tracking-widest uppercase">
@@ -176,12 +216,12 @@ export function Portfolio() {
             </span>
           </h2>
 
-          <div className="flex flex-wrap justify-center gap-3 mt-12">
+          <div className="flex flex-wrap justify-center gap-3 mt-8">
             {CATEGORIES.map((category) => (
               <button
                 key={category}
                 onClick={() => setActiveTab(category)}
-                className={`relative px-6 py-2 rounded-full text-sm font-bold transition-all duration-300 ${
+                className={`relative px-5 py-2 rounded-full text-sm font-bold transition-all duration-300 ${
                   activeTab === category ? "text-white" : "text-slate-500 hover:text-slate-300"
                 }`}
               >
@@ -200,11 +240,11 @@ export function Portfolio() {
 
         <motion.div 
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 auto-rows-[450px]"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project) => (
-              <ProjectCard key={project.title} project={project} />
+            {filteredProjects.map((project, index) => (
+              <ProjectCard key={project.title + index} project={project} />
             ))}
           </AnimatePresence>
         </motion.div>

@@ -30,6 +30,7 @@ export default function App() {
   }, [isMenuOpen]);
 
   const navLinks = [
+    { name: "Home", href: "#" },
     { name: "About", href: "#about" },
     { name: "Services", href: "#services" },
     { name: "Portfolio", href: "#portfolio" },
@@ -49,14 +50,14 @@ export default function App() {
         <div className="container mx-auto px-6 py-5">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <div className="flex items-center gap-3 group cursor-pointer">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:scale-110 transition-transform">
-                <span className="text-white font-bold text-xl uppercase tracking-tighter">B</span>
+            <a href="#" className="flex items-center gap-3 group cursor-pointer">
+              <div className="w-12 h-12 rounded-full border-2 border-white/20 overflow-hidden flex-shrink-0 group-hover:scale-110 transition-transform shadow-lg shadow-blue-500/20">
+                <img src="/images/logo.png" alt="Bodega Tech Logo" className="w-full h-full object-cover bg-white" />
               </div>
               <span className="text-xl font-black tracking-tight bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
-                BOdega Tech Solutions
+                Bodega Tech Solutions
               </span>
-            </div>
+            </a>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-10">

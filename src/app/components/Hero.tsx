@@ -71,7 +71,7 @@ export function Hero() {
         >
           <Sparkles className="w-4 h-4 text-cyan-400" />
           <span className="text-white/80 text-xs font-medium tracking-wider uppercase">
-            Complete Digital & Tech Solutions for Growing Businesses
+            Your Digital Growth Partner
           </span>
         </motion.div>
 
