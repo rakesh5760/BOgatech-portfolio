@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Hero } from "./components/Hero";
 import { About } from "./components/About";
+import { Founder } from "./components/Founder";
 import { Services } from "./components/Services";
 import { Portfolio } from "./components/Portfolio";
 import { WhyChooseUs } from "./components/WhyChooseUs";
@@ -145,6 +146,7 @@ export default function App() {
       <main>
         <Hero />
         <About />
+        <Founder />
         <Services />
         <Portfolio />
         <WhyChooseUs />

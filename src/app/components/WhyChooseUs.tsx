@@ -32,8 +32,8 @@ const features = [
 const stats = [
   { number: "10+", label: "Projects Completed" },
   { number: "5+", label: "Happy Clients" },
-  { number: "Expertise", label: "Multi-Service" },
-  { number: "Startup", label: "Growing Team" },
+  { number: "8+", label: "Expert Services" },
+  { number: "50+", label: "Team Experts" },
 ];
 
 export function WhyChooseUs() {
